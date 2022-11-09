@@ -20,10 +20,33 @@ class Person {
 }
 
 // Student 클래스 - Person 상속, 접근제어자 확인
-
+class Student extends Person {
+    Student() {
+        a1 = 1;
+        a2 = 1;
+    }
+}
 
 // Student 클래스 - Person 상속, super 사용, 오버라이딩
+class Student2 extends Person {
+    String name;
+    int stdId;
 
+    Student2(String name, int age, int stdId) {
+        this.name = name; //위에서 선언한 이름을 불러옴
+//        super.name = name; //부모에서 상속받은 변수
+//        super(name, age); //부모를 호출하는 건
+        this.age = age; //부모에서 상속받은 변수를 뜻함
+        this.stdId = stdId;
+    }
+
+    public void printInfo() {
+        System.out.println("Student2.printInfo");
+        System.out.println("name: " + name); //자기객체의 것을 먼저 사용하므로 글로벌인 것을 먼저 받아야 함.
+        System.out.println("age: " + age);
+        System.out.println("stdId: " + stdId);
+    }
+}
 
 
 public class Main {
@@ -33,16 +56,16 @@ public class Main {
 //      Test code
 //      1. 상속
         System.out.println("=============");
-//        Student s1 = new Student();
-//        s1.name = "a";
-//        s1.age = 25;
-//        s1.printInfo();
+        Student s1 = new Student();
+        s1.name = "a";
+        s1.age = 25;
+        s1.printInfo();
 
 
 //      2. super, super(), 오버라이딩
         System.out.println("=============");
-//        Student2 s2 = new Student2("b",32, 1);
-//        s2.printInfo();
+        Student2 s2 = new Student2("b",32, 1);
+        s2.printInfo();
 
     }
 }
